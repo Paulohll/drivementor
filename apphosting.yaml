@@ -1,0 +1,28 @@
+runConfig:
+  # Configuración para Next.js con Node.js 18
+  runtime: nodejs18
+  
+  # Variables de entorno para el build
+  env:
+    - variable: NODE_ENV
+      value: production
+    - variable: NEXT_TELEMETRY_DISABLED
+      value: "1"
+  
+  # Configuración específica de Next.js
+  buildCommand: npm ci && npm run build
+  startCommand: npm start
+
+# Configuración del servicio
+services:
+  - name: drivementor-frontend
+    serviceId: drivementor-frontend
+    
+# Configuración de recursos
+resources:
+  cpu: 1
+  memory: 1GB
+  
+# Configuración de red
+networking:
+  ingressPolicy: ALLOW_ALL
