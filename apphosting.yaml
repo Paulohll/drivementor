@@ -2,27 +2,66 @@ runConfig:
   # Configuración para Next.js con Node.js 18
   runtime: nodejs18
   
-  # Variables de entorno para el build
-  env:
-    - variable: NODE_ENV
-      value: production
-    - variable: NEXT_TELEMETRY_DISABLED
-      value: "1"
-  
-  # Configuración específica de Next.js
-  buildCommand: npm ci && npm run build
-  startCommand: npm start
-
-# Configuración del servicio
-services:
-  - name: drivementor-frontend
-    serviceId: drivementor-frontend
-    
-# Configuración de recursos
-resources:
+  # Configuración de CPU y memoria
   cpu: 1
-  memory: 1GB
+  memoryMiB: 1024
   
-# Configuración de red
-networking:
-  ingressPolicy: ALLOW_ALL
+# Variables de entorno para Firebase
+env:
+  # Variables del entorno de build y runtime  
+  - variable: NODE_ENV
+    value: production
+    availability:
+      - BUILD
+      - RUNTIME
+      
+  - variable: NEXT_TELEMETRY_DISABLED
+    value: "1"
+    availability:
+      - BUILD
+      
+  # Variables de Firebase - CAMBIAR POR NUEVAS CLAVES DESPUÉS DEL ROTATE
+  - variable: NEXT_PUBLIC_FIREBASE_API_KEY
+    value: "AIzaSyAcY_1pq1pEoYURqkuPJqMWy62CnzkoBUk"
+    availability:
+      - BUILD
+      - RUNTIME
+      
+  - variable: NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN
+    value: "citafacil-452323.firebaseapp.com"
+    availability:
+      - BUILD
+      - RUNTIME
+      
+  - variable: NEXT_PUBLIC_FIREBASE_PROJECT_ID
+    value: "citafacil-452323"
+    availability:
+      - BUILD
+      - RUNTIME
+      
+  - variable: NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET
+    value: "citafacil-452323.firebasestorage.app"
+    availability:
+      - BUILD
+      - RUNTIME
+      
+  - variable: NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
+    value: "310633424170"
+    availability:
+      - BUILD
+      - RUNTIME
+      
+  - variable: NEXT_PUBLIC_FIREBASE_APP_ID
+    value: "1:310633424170:web:34446c8f7dc35da87cea53"
+    availability:
+      - BUILD
+      - RUNTIME
+      
+  - variable: NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID
+    value: "G-VQR5NJTNF2"
+    availability:
+      - BUILD
+      - RUNTIME
+
+# Configuración específica de Next.js
+runCommand: npm start
