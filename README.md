@@ -14,11 +14,37 @@ pnpm dev
 bun dev
 ```
 
+## Environment Setup
+
+1. Copy the environment example file:
+   ```bash
+   cp .env.example .env.local
+   ```
+
+2. Fill in your Firebase configuration values in `.env.local`
+
+3. **NEVER commit `.env.local` to version control** - it contains sensitive API keys
+
+## Development
+
+```bash
+npm install
+npm run dev
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Security Notes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- All Firebase credentials are stored in environment variables
+- The `.env.local` file is ignored by Git for security
+- Never commit API keys or sensitive credentials to the repository
+
+## Deployment
+
+The app is configured for Firebase App Hosting with automatic deployment from the `main` branch.
+
+Environment variables for production must be configured in the Firebase App Hosting console.
 
 ## Learn More
 

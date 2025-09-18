@@ -26,8 +26,8 @@ export default function Menu() {
         
         {/* Navigation y tiempo */}
         <div className="flex flex-col sm:flex-row gap-2 sm:gap-6 sm:items-center">
-          {/* Tracker de tiempo */}
-          {user && (
+          {/* Tracker de tiempo - TEMPORALMENTE OCULTO */}
+          {false && user && (
             <div className="flex items-center gap-2 bg-blue-800 bg-opacity-50 px-3 py-2 rounded-lg text-xs sm:text-sm backdrop-blur-sm order-last sm:order-first">
               <span className="text-blue-200">{APP_CONFIG.icons.time}</span>
               <span className="font-medium">{formatTime(totalTime)}</span>
@@ -43,11 +43,14 @@ export default function Menu() {
               <span className="hidden sm:inline">{APP_CONFIG.icons.tests} Tests</span>
               <span className="sm:hidden">Tests</span>
             </Link>
-            <Link href={APP_CONFIG.routes.study} className="hover:text-blue-200 transition-colors font-medium flex items-center gap-1 px-2 py-1 rounded">
-              <span className="sm:hidden">{APP_CONFIG.icons.study}</span>
-              <span className="hidden sm:inline">{APP_CONFIG.icons.study} Estudio</span>
-              <span className="sm:hidden">Estudio</span>
-            </Link>
+            {/* Estudio - TEMPORALMENTE OCULTO */}
+            {false && (
+              <Link href={APP_CONFIG.routes.study} className="hover:text-blue-200 transition-colors font-medium flex items-center gap-1 px-2 py-1 rounded">
+                <span className="sm:hidden">{APP_CONFIG.icons.study}</span>
+                <span className="hidden sm:inline">{APP_CONFIG.icons.study} Estudio</span>
+                <span className="sm:hidden">Estudio</span>
+              </Link>
+            )}
             <Link href={APP_CONFIG.routes.stats} className="hover:text-blue-200 transition-colors flex items-center gap-1 px-2 py-1 rounded">
               <span className="sm:hidden">{APP_CONFIG.icons.stats}</span>
               <span className="hidden sm:inline">{APP_CONFIG.icons.stats} Estadísticas</span>
